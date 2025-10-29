@@ -29,6 +29,27 @@ const form2schema = new mongoose.Schema({
 });
 const Form2 = mongoose.model('Form2', form2schema);
 
+// 🟢 Fetch all submissions from Form1
+app.get('/api/form1', async (req, res) => {
+  try {
+    const form1Data = await Form1.find();
+    res.json(form1Data);
+  } catch (error) {
+    console.error('Error fetching Form 1 data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// 🟢 Fetch all submissions from Form2
+app.get('/api/form2', async (req, res) => {
+  try {
+    const form2Data = await Form2.find();
+    res.json(form2Data);
+  } catch (error) {
+    console.error('Error fetching Form 2 data:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 app.post('/api/form1', async (req, res) => {
     const { name,phone,program } = req.body;
     try {
@@ -52,9 +73,5 @@ app.post('/api/form2', async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
-app.get('/ping', (req, res) => {
-    res.status(200).json({ status: "Backend is alive!" });
-    console.log("ping is here!!");
-});
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(5000, () => console.log('Server running on port 5000'));
