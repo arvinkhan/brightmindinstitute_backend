@@ -1,10 +1,13 @@
 import { sendWA } from "./whatsapp.js";
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
-require('dotenv').config();
+
+dotenv.config();
+
 
 const app = express();
 app.use(cors());
