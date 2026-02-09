@@ -11,7 +11,7 @@ const client = twilio(
 export function sendWA(message) {
   return client.messages.create({
     from: "whatsapp:+14155238886",
-    to: "whatsapp:+918755211749",
+    to: "whatsapp:+919310135926",
     body: message
   });
 }
